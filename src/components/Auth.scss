@@ -32,6 +32,14 @@
   word-break: break-all;
 }
 
+.Auth__content {
+  width: 100%;
+}
+
+.Auth__keystore {
+  margin-bottom: 5px;
+}
+
 .Auth__label {
   display: block;
   color: white;
@@ -42,6 +50,13 @@
   vertical-align: middle;
   width: 75%;
   height: 20px;
+}
+
+.Auth__passwordInput {
+  display: inline-block;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .Auth__button {

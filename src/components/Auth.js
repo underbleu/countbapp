@@ -179,19 +179,21 @@ class Auth extends Component {
           // View 1: Access by keystore + password.
           ? (
             <Fragment>
-              <p className="Auth__label" htmlFor="keystore">Keystore:</p>
-              <label className="Auth__button" htmlFor="keystore">Upload</label>
-              <input
-                className="Auth__file"
-                id="keystore"
-                type="file"
-                onChange={this.handleImport}
-                accept=".json"
-              />
-              <p
-                className="Auth__fileName">
-                {keystoreName || 'No keystore file...'}
-              </p>
+              <div className="Auth__keystore">
+                <p className="Auth__label" htmlFor="keystore">Keystore:</p>
+                <label className="Auth__button" htmlFor="keystore">Upload</label>
+                <input
+                  className="Auth__file"
+                  id="keystore"
+                  type="file"
+                  onChange={this.handleImport}
+                  accept=".json"
+                />
+                <p
+                  className="Auth__fileName">
+                  {keystoreName || 'No keystore file...'}
+                </p>
+              </div>
               <label className="Auth__label" htmlFor="password">Password:</label>
               <input
                 id="input-password"
