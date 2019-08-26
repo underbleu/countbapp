@@ -60,13 +60,13 @@ class Auth extends Component {
           this.setState({ keystoreMsg: 'Invalid keystore file.' })
           return
         }
-
         // If key store file is valid,
         // 1) set e.target.result keystore
         // 2) show message "It is valid keystore. input your password."
         this.setState({
           keystore: e.target.result,
           keystoreMsg: 'It is valid keystore. input your password.',
+          keystoreName: keystore.name,
         }, () => document.querySelector('#input-password').focus())
       } catch (e) {
         this.setState({ keystoreMsg: 'Invalid keystore file.' })
@@ -160,7 +160,7 @@ class Auth extends Component {
   }
 
   renderAuth = () => {
-    const { keystoreMsg, accessType } = this.state
+    const { keystore, keystoreMsg, keystoreName, accessType } = this.state
     const walletInstance = this.getWallet()
     // 'walletInstance' exists means that wallet is already integrated.
     if (walletInstance) {
@@ -179,13 +179,20 @@ class Auth extends Component {
           // View 1: Access by keystore + password.
           ? (
             <Fragment>
-              <label className="Auth__label">Keystore:</label>
+              <p className="Auth__label" htmlFor="keystore">Keystore:</p>
+              <label className="Auth__button" htmlFor="keystore">Upload</label>
               <input
-                className="Auth__keystoreInput"
+                className="Auth__file"
+                id="keystore"
                 type="file"
                 onChange={this.handleImport}
+                accept=".json"
               />
-              <label className="Auth__label">Password:</label>
+              <p
+                className="Auth__fileName">
+                {keystoreName || 'No keystore file...'}
+              </p>
+              <label className="Auth__label" htmlFor="password">Password:</label>
               <input
                 id="input-password"
                 className="Auth__passwordInput"
@@ -207,7 +214,7 @@ class Auth extends Component {
             </Fragment>
           )
         }
-        <button className="Auth__login" onClick={this.handleLogin}>Login</button>
+        <button className="Auth__button" onClick={this.handleLogin}>Login</button>
         <p className="Auth__keystoreMsg">{keystoreMsg}</p>
         <p className="Auth__toggleAccessButton" onClick={this.toggleAccessType}>
           {accessType === 'privateKey'
