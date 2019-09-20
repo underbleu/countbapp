@@ -28,7 +28,7 @@ module.exports = {
      * If you deploy your contract with private key connector,
      * You don't need to set `host`, `port`, `from` option.
      */
-    klaytn: {
+    baobab: {
       provider: () => new HDWalletProvider(PRIVATE_KEY, URL),
       network_id: NETWORK_ID,
       gas: GASLIMIT,
@@ -43,7 +43,7 @@ module.exports = {
      * If you deploy your contract with unlocked account on klaytn node,
      * You don't need to set `provider` option.
      */
-    // klaytn: {
+    // baobab: {
     //   host: HOST,
     //   port: PORT,
     //   network_id: NETWORK_ID,
@@ -53,10 +53,10 @@ module.exports = {
     // },
 
   },
-  // 3. Specify the version of compiler, we use 0.4.24
+  // 3. Specify the version of compiler, we use 0.5.6
   compilers: {
     solc: {
-      version: '0.4.24',
+      version: '0.5.6',
     },
   },
 }
