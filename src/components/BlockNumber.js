@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-
-import { cav } from 'klaytn/caver'
+import caver from 'klaytn/caver'
 
 import './BlockNumber.scss'
 
@@ -21,11 +20,11 @@ class BlockNumber extends Component {
 
   /**
    * 'getBlockNumber' method works
-   * 1) get current block number from klaytn node by calling 'cav.klay.getBlockNumber()'
+   * 1) get current block number from klaytn node by calling 'caver.klay.getBlockNumber()'
    * 2) set 'currentBlockNumber' state to the value fetched from step 1).
    */
   getBlockNumber = async () => {
-    const blockNumber = await cav.klay.getBlockNumber()
+    const blockNumber = await caver.klay.getBlockNumber()
     this.setState({ currentBlockNumber: blockNumber })
   }
 

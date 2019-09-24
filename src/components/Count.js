@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
-
-import { cav } from 'klaytn/caver'
+import caver from 'klaytn/caver'
 
 import './Count.scss'
 
@@ -9,12 +8,12 @@ class Count extends Component {
   constructor() {
     super()
     // ** 1. Create contract instance **
-    // ex:) new cav.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
+    // ex:) new caver.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
     // You can call contract method through this instance.
     // Now you can access the instance by `this.countContract` variable.
     this.countContract = DEPLOYED_ABI
       && DEPLOYED_ADDRESS
-      && new cav.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
+      && new caver.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
     this.state = {
       count: '',
       lastParticipant: '',
@@ -41,7 +40,7 @@ class Count extends Component {
   }
 
   setPlus = () => {
-    const walletInstance = cav.klay.accounts.wallet && cav.klay.accounts.wallet[0]
+    const walletInstance = caver.klay.accounts.wallet && caver.klay.accounts.wallet[0]
 
     // Need to integrate wallet for calling contract method.
     if (!walletInstance) return
@@ -85,7 +84,7 @@ class Count extends Component {
   }
 
   setMinus = () => {
-    const walletInstance = cav.klay.accounts.wallet && cav.klay.accounts.wallet[0]
+    const walletInstance = caver.klay.accounts.wallet && caver.klay.accounts.wallet[0]
 
     // Need to integrate wallet for calling contract method.
     if (!walletInstance) return

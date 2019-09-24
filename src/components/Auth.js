@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
-
-import { cav } from 'klaytn/caver'
+import caver from 'klaytn/caver'
 
 import './Auth.scss'
 
@@ -104,7 +103,7 @@ class Auth extends Component {
 
     // Access type1: access through keystore + password
     try {
-      const { privateKey: privateKeyFromKeystore } = cav.klay.accounts.decrypt(keystore, password)
+      const { privateKey: privateKeyFromKeystore } = caver.klay.accounts.decrypt(keystore, password)
       this.integrateWallet(privateKeyFromKeystore)
     } catch (e) {
       this.setState({ keystoreMsg: `Password doesn't match.` })
@@ -115,8 +114,8 @@ class Auth extends Component {
    * getWallet method get wallet instance from caver.
    */
   getWallet = () => {
-    if (cav.klay.accounts.wallet.length) {
-      return cav.klay.accounts.wallet[0]
+    if (caver.klay.accounts.wallet.length) {
+      return caver.klay.accounts.wallet[0]
     }
   }
 
@@ -129,8 +128,8 @@ class Auth extends Component {
    * cf) session storage stores item until tab is closed.
    */
   integrateWallet = (privateKey) => {
-    const walletInstance = cav.klay.accounts.privateKeyToAccount(privateKey)
-    cav.klay.accounts.wallet.add(walletInstance)
+    const walletInstance = caver.klay.accounts.privateKeyToAccount(privateKey)
+    caver.klay.accounts.wallet.add(walletInstance)
     sessionStorage.setItem('walletInstance', JSON.stringify(walletInstance))
     this.reset()
   }
@@ -141,7 +140,7 @@ class Auth extends Component {
    * 2) 'walletInstance' value from session storage.
    */
   removeWallet = () => {
-    cav.klay.accounts.wallet.clear()
+    caver.klay.accounts.wallet.clear()
     sessionStorage.removeItem('walletInstance')
     this.reset()
   }

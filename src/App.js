@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-
-import { cav } from 'klaytn/caver'
+import caver from 'klaytn/caver'
 import BlockNumber from 'components/BlockNumber'
 import Auth from 'components/Auth'
 
@@ -17,7 +16,7 @@ class App extends Component {
     // If 'walletInstance' value exists, add it to caver's wallet
     if (walletFromSession) {
       try {
-        cav.klay.accounts.wallet.add(JSON.parse(walletFromSession))
+        caver.klay.accounts.wallet.add(JSON.parse(walletFromSession))
       } catch (e) {
         // If value in sessionStorage is invalid wallet instance,
         // remove it from sessionStorage.
