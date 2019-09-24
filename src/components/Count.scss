@@ -41,6 +41,11 @@
     opacity: .2;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    &:hover { opacity: 1; }
+  }
+
   &--setting {
     &::before {
       content: '';

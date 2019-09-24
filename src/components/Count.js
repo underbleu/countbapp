@@ -167,6 +167,7 @@ class Count extends Component {
           className={cx('Count__button', {
             'Count__button--setting': settingDirection === 'minus',
           })}
+          disabled={count == 0}
         >
           -
         </button>
